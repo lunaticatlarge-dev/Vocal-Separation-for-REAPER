@@ -143,11 +143,7 @@ function run()
   local item_len = reaper.GetMediaItemInfo_Value(item, "D_LENGTH")
 
   local temp_dir = get_temp_dir()
-  local ok_dir = os.execute("mkdir -p \"" .. temp_dir .. "\"")
-  if not ok_dir or ok_dir ~= 0 then
-    log("Failed to create temp directory: " .. temp_dir)
-    return
-  end
+  os.execute("mkdir -p \"" .. temp_dir .. "\"")
 
   local temp_wav = temp_dir .. "/" .. src_name .. "_full.wav"
   log("Rendering to " .. temp_wav)
